@@ -57,6 +57,7 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 5000,
+      background_colour = "#00000",
     },
   },
 
@@ -96,7 +97,7 @@ return {
     opts = {
       options = {
         -- globalstatus = false,
-        theme = "solarized_dark",
+        theme = "nordic",
       },
     },
   },
