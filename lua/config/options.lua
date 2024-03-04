@@ -36,6 +36,20 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
 
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+  float = {
+    header = { "  Diagnostics", "HeaderDiagnosticOpenFloat" },
+    prefix = "",
+    border = "rounded",
+    source = "always",
+  },
+})
+
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
