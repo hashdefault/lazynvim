@@ -1,11 +1,11 @@
 return {
   {
-    "AlexvZyl/nordic.nvim",
+    "catppuccin/nvim",
     lazy = false,
     priority = 1000,
-    name = "nordic",
+    name = "catppuccin",
     config = function()
-      require("nordic").setup({
+      require("catppuccin").setup({
         transparent_bg = true,
       })
     end,
