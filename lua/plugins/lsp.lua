@@ -143,6 +143,14 @@ return {
           border = "rounded",
         },
       },
+      ui = {
+        windows = {
+          default_options = {
+            border = "rounded",
+          },
+        },
+      },
+
       setup = {},
     },
   },
