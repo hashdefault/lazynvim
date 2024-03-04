@@ -8,10 +8,10 @@ local keymap = vim.keymap
 
 -- lsp diagnostics
 keymap.set("n", "<space>e", ":lua vim.diagnostic.open_float()<cr>", opts)
-keymap.set("n", "<C-j", function()
+keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
-keymap.set("n", "<C-k", function()
+keymap.set("n", "<C-k>", function()
   vim.diagnostic.goto_prev()
 end, opts)
 
