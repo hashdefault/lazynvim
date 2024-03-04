@@ -1,3 +1,4 @@
+local window = require("cmp.config.window")
 return {
   -- Create annotations with one keybind, and jump your cursor in the inserted annotation
   {
@@ -92,6 +93,11 @@ return {
     dependencies = { "hrsh7th/cmp-emoji" },
     opts = function(_, opts)
       table.insert(opts.sources, { name = "emoji" })
+      local cmp = require("cmp")
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
     end,
   },
 }
