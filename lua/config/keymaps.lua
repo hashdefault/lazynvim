@@ -47,3 +47,6 @@ keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- new file
 keymap.set("n", "<leader>n", ":enew<cr>", { noremap = true, silent = true })
+
+--jump or expand snippets
+--vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")
