@@ -6,6 +6,9 @@ local opts = { silent = true, noremap = true }
 
 local keymap = vim.keymap
 
+-- Neotree
+keymap.set("n", "<C-t>", ":Neotree toggle<cr>", { noremap = true, silent = true })
+
 -- lsp diagnostics
 keymap.set("n", "<space>e", ":lua vim.diagnostic.open_float()<cr>", opts)
 keymap.set("n", "<C-j>", function()
@@ -44,6 +47,3 @@ keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- new file
 keymap.set("n", "<leader>n", ":enew<cr>", { noremap = true, silent = true })
-
---jump or expand snippets
-vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")
