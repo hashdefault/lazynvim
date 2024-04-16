@@ -6,6 +6,9 @@ local opts = { silent = true, noremap = true }
 
 local keymap = vim.keymap
 
+-- Neotree
+keymap.set("n", "<C-t>", ":Neotree toggle<cr>", { noremap = true, silent = true })
+
 -- lsp diagnostics
 keymap.set("n", "<space>e", ":lua vim.diagnostic.open_float()<cr>", opts)
 keymap.set("n", "<C-j>", function()
