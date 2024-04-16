@@ -16,7 +16,7 @@ keymap.set("n", "<C-k>", function()
 end, opts)
 
 keymap.set("n", "<space>gs", function()
-  require("functions").generateGettersAndSetters()
+  require("config.functions").generateGettersAndSetters()
 end, opts)
 
 keymap.set("n", "dw", 'vb"_d')
