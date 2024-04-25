@@ -18,7 +18,7 @@ keymap.set("n", "<C-k>", function()
   vim.diagnostic.goto_prev()
 end, opts)
 
-keymap.set("n", "<space>gs", function()
+keymap.set("n", "<leader>ll", function()
   require("config.functions").generateGettersAndSetters()
 end, opts)
 
