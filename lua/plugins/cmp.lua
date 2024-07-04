@@ -1,12 +1,18 @@
 return {
   {
-    "nvim-cmp",
+    "htsh7th/cmp-nvim-lsp",
+  },
+  {
+    "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local defaults = require("cmp.config.default")()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "./lua/snippets" })
+
       return {
         completion = {
           completeopt = "menu,menuone,noselect",

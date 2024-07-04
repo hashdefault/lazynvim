@@ -2,6 +2,7 @@ local loaded, ls = pcall(require, "luasnip")
 if not loaded then
   return
 end
+
 local t = ls.text_node
 local i = ls.insert_node
 
