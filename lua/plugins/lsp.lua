@@ -9,14 +9,12 @@ return {
         "luacheck",
         "shellcheck",
         "shfmt",
-        "tailwindcss-language-server",
         "typescript-language-server",
+        "php-cs-fixer",
         "css-lsp",
-        "intelephense",
       })
     end,
   },
-
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
@@ -30,6 +28,7 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+
         tsserver = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)

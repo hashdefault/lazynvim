@@ -22,13 +22,11 @@ keymap.set("n", "<leader>ll", function()
   require("config.functions").generateGettersAndSetters()
 end, opts)
 
+-- delete word backwards
 keymap.set("n", "dw", 'vb"_d')
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
-
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- Disable continuations
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
@@ -47,6 +45,3 @@ keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- new file
 keymap.set("n", "<leader>n", ":enew<cr>", { noremap = true, silent = true })
-
---jump or expand snippets
---vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")

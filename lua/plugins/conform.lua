@@ -2,7 +2,7 @@ return {
   "stevearc/conform.nvim",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-  opts = {
+  default_format_opts = {
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
@@ -17,7 +17,7 @@ return {
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
-      php = { "intelephense" },
+      --php = { "php-cs-fixer" },
       sh = { "shfmt" },
     },
     format = {
