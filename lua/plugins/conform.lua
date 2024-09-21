@@ -17,7 +17,7 @@ return {
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
-      --php = { "php-cs-fixer" },
+      php = { "php", "intelephense" },
       sh = { "shfmt" },
     },
     format = {
@@ -29,7 +29,7 @@ return {
   vim.keymap.set({ "n", "v" }, "<leader>fm", function()
     require("conform").format({
       lsp_fallback = true,
-      async = true,
+      async = false,
       timeout_ms = 1000,
     })
   end, { desc = "Format file or range (in visual mode)" }),

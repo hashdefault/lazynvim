@@ -9,9 +9,10 @@ return {
         "luacheck",
         "shellcheck",
         "shfmt",
+        "prettier",
         "typescript-language-server",
-        "php-cs-fixer",
         "css-lsp",
+        "intelephense",
       })
     end,
   },
@@ -28,7 +29,6 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
-
         tsserver = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
