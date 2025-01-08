@@ -12,13 +12,14 @@ return {
         "prettier",
         "typescript-language-server",
         "css-lsp",
-        "intelephense",
+        --"intelephense",
       })
     end,
   },
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
     opts = {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options

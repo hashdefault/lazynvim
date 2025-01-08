@@ -17,7 +17,7 @@ return {
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
-      php = { "php", "intelephense" },
+      --php = { "php", "intelephense" },
       sh = { "shfmt" },
     },
     format = {
