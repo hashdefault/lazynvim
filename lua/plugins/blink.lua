@@ -33,7 +33,11 @@ return {
       },
       snippets = { preset = "luasnip" },
       completion = {
-
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
         menu = {
           enabled = true,
           draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } } },
