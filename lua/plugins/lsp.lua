@@ -5,14 +5,16 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "stylua",
-        "selene",
+        "selene", --lua
         "luacheck",
-        "shellcheck",
-        "shfmt",
-        "prettier",
-        "pyright",
+        "shellcheck", --shell
+        "shfmt", --shell
+        "markdownlint",
+        "prettier", --js
+        "black", --python
+        "pyright", --python
         "css-lsp",
-        "intelephense",
+        "intelephense", --php
         "vue-language-server",
       })
     end,
