@@ -10,7 +10,7 @@ return {
         "shellcheck",
         "shfmt",
         "prettier",
-        "typescript-language-server",
+        "pyright",
         "css-lsp",
         "intelephense",
         "vue-language-server"
@@ -25,36 +25,14 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
+        pyright = {},
         cssls = {},
-        volar = {},
-        tsserver = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
-          single_file_support = false,
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "literal",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
+        volar = {
+          filetypes = { "typescript", "javascript", "vue", 'javascriptreact', 'typescriptreact' }, -- Add relevant file types
+          init_options = {
+            vue = {
+              hybridMode = false
+            }
           },
         },
         html = {},
