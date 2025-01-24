@@ -12,7 +12,8 @@ return {
         "prettier",
         "typescript-language-server",
         "css-lsp",
-        --"intelephense",
+        "intelephense",
+        "vue-language-server"
       })
     end,
   },
@@ -25,11 +26,7 @@ return {
       ---@type lspconfig.options
       servers = {
         cssls = {},
-        tailwindcss = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
-        },
+        volar = {},
         tsserver = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)

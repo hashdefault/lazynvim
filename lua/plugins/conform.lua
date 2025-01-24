@@ -8,6 +8,7 @@ return {
       typescript = { "prettier" },
       javascriptreact = { "prettier" },
       typescriptreact = { "prettier" },
+      vue = { "eslint" },
       svelte = { "prettier" },
       css = { "prettier" },
       html = { "prettier" },
@@ -17,7 +18,7 @@ return {
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
-      --php = { "php", "intelephense" },
+      php = { "intelephense" },
       sh = { "shfmt" },
     },
     format = {
