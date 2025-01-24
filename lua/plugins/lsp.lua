@@ -13,7 +13,7 @@ return {
         "pyright",
         "css-lsp",
         "intelephense",
-        "vue-language-server"
+        "vue-language-server",
       })
     end,
   },
@@ -28,11 +28,11 @@ return {
         pyright = {},
         cssls = {},
         volar = {
-          filetypes = { "typescript", "javascript", "vue", 'javascriptreact', 'typescriptreact' }, -- Add relevant file types
+          filetypes = { "typescript", "javascript", "vue", "javascriptreact", "typescriptreact" }, -- Add relevant file types
           init_options = {
             vue = {
-              hybridMode = false
-            }
+              hybridMode = false,
+            },
           },
         },
         html = {},
