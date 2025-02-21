@@ -1,11 +1,10 @@
 return {
   {
-    "neanias/everforest-nvim",
-    version = false,
+    "NTBBloodbath/doom-one.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("everforest").load()
+      vim.cmd("colorscheme doom-one")
     end,
   },
 }
