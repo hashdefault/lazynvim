@@ -6,7 +6,7 @@
   "catppuccin": { "branch": "main", "commit": "0b2437bcc12b4021614dc41fcea9d0f136d94063" },
   "conform.nvim": { "branch": "master", "commit": "8ed162b0637d4c4f69ebe3e8e49b35662a82e137" },
   "dashboard-nvim": { "branch": "master", "commit": "000448d837f6e7a47f8f342f29526c4d7e49e9ce" },
-  "doom-one.nvim": { "branch": "main", "commit": "2d910b0c10efb2417871157b42875832a4c626f5" },
+  "everforest": { "branch": "master", "commit": "adbae1a82592657200388ad1a82ae9a219e513e7" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "fzf-lua": { "branch": "main", "commit": "8633175d4e74cd6013f75af7682c7e8ac133056a" },
   "git.nvim": { "branch": "main", "commit": "164daed4eff61bd6bee6f1c97cb78144b9374022" },
