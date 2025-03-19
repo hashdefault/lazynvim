@@ -43,7 +43,6 @@ vim.opt.mouse = ""
 vim.api.nvim_set_hl(0,"BlinkCmpSignatureHelpBorder", { fg  = "#999990" } )
 
 
-
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
