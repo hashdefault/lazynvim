@@ -9,7 +9,7 @@ return {
         "luacheck",
         "shellcheck", --shell
         "shfmt", --shell
-        "markdownlint",
+        "marksman", --md
         "prettier", --js
         "black", --python
         "pyright", --python
@@ -36,6 +36,9 @@ return {
               hybridMode = false,
             },
           },
+        },
+        marksman = {
+          filetypes = { "markdown", "vimwiki" },
         },
         html = {},
         yamlls = {
