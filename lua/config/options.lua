@@ -39,9 +39,9 @@ vim.opt.cursorline = true
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
-
-vim.api.nvim_set_hl(0,"BlinkCmpSignatureHelpBorder", { fg  = "#999990" } )
-
+vim.opt.compatible = false
+vim.opt.filetype = 'on'
+vim.opt.syntax = 'on'
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
