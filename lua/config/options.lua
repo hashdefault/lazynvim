@@ -4,6 +4,15 @@
 vim.g.mapleader = " "
 vim.g.autoformat = false
 
+--vimwiki config
+vim.g.vimwiki_list = { { path = "~/Nextcloud/notes", syntax = "markdown", ext = ".md" } }
+vim.g.vimwiki_global_ext = 0
+vim.g.vimwiki_ext2syntax = {
+  ['.md'] = 'markdown',
+  ['.markdown'] = 'markdown',
+  ['.mdown'] = 'markdown',
+}
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
@@ -40,8 +49,8 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
 vim.opt.compatible = false
-vim.opt.filetype = 'on'
-vim.opt.syntax = 'on'
+vim.opt.filetype = "on"
+vim.opt.syntax = "on"
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
