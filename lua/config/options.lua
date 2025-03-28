@@ -4,8 +4,9 @@
 vim.g.mapleader = " "
 vim.g.autoformat = false
 
-
 vim.scriptencoding = "utf-8"
+vim.opt.spell = true
+vim.opt.spelllang = { "en", "pt" }
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
