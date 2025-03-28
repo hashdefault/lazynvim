@@ -10,7 +10,7 @@ return {
     vim.g.vimwiki_list = {
       {
         -- Here will be the path for your wiki
-        path = "~/Nextcloud/notes",
+        path = "~/Nextcloud/Notes",
         -- The syntax for the wiki
         syntax = "markdown",
         ext = "md",
