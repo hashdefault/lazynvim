@@ -52,7 +52,7 @@ local lualine_config = {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = { { "filename" }, { icon = "  LSP Active: ", "lsp_status" } },
+      lualine_c = { { "filename" }, { color = { fg = "#fff3d1" }, icon = "  LSP Active: ", "lsp_status" } },
       lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },

@@ -4,8 +4,6 @@
 vim.g.mapleader = " "
 vim.g.autoformat = false
 
-vim.opt.spell = true
-vim.opt.spelllang = { "en", "pt" }
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
@@ -44,6 +42,14 @@ vim.opt.mouse = ""
 vim.opt.compatible = false
 vim.opt.filetype = "on"
 vim.opt.syntax = "on"
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.md",
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "pt_br", 'en' }
+  end,
+})
 
 -- Undercurl
 --vim.cmd([[let &t_Cs = "\e[4:3m"]])

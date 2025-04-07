@@ -1,8 +1,6 @@
 -- functions.lua
 function generateGettersAndSetters()
-	local line = vim.api.nvim_get_current_line()
-	-- Extract the attribute name from the current line
-	local attribute = line:match("%$([%w_]+)")
+	local line = vim.api.nvim_get_current_line() -- Extract the attribute name from the current line local attribute = line:match("%$([%w_]+)")
 
 	if attribute then
 		-- Generate the getter and setter methods
@@ -50,3 +48,6 @@ end
 return {
 	generateGettersAndSetters = generateGettersAndSetters,
 }
+
+
+
