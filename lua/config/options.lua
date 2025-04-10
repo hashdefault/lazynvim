@@ -47,9 +47,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.md",
   callback = function()
     vim.opt_local.spell = true
-    vim.opt_local.spelllang = { "pt_br", 'en' }
+    vim.opt_local.spelllang = { "pt_br", "en" }
   end,
 })
+
+vim.cmd [[ highlight Normal guibg=NONE ctermbg=NONE ]]
+
 
 -- Undercurl
 --vim.cmd([[let &t_Cs = "\e[4:3m"]])
