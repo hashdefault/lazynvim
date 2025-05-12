@@ -4,6 +4,10 @@
 vim.g.mapleader = " "
 vim.g.autoformat = false
 
+vim.g.snacks_animate = false
+vim.g.minianimate_disable = true
+vim.g.dashboard = false
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
@@ -51,8 +55,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.cmd [[ highlight Normal guibg=NONE ctermbg=NONE ]]
-
+vim.cmd([[ highlight Normal guibg=NONE ctermbg=NONE ]])
 
 -- Undercurl
 --vim.cmd([[let &t_Cs = "\e[4:3m"]])
