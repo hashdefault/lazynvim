@@ -15,7 +15,8 @@ return {
         "pyright", --python
         "css-lsp",
         "intelephense", --php
-        "vue-language-server",
+        "vue-language-server", --vue
+        "typescript-language-server" --ts
       })
     end,
   },
@@ -27,6 +28,7 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
+        ts_ls = {},
         pyright = {},
         cssls = {},
         volar = {

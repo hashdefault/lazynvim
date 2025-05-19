@@ -2,7 +2,7 @@ return {
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
-    enabled = false,
+    enabled = true,
     opts = function(_, opts)
       table.insert(opts.routes, {
         filter = {
