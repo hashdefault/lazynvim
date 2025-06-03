@@ -43,5 +43,7 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
+keymap.set("n", "<leader>rd", ":VimwikiRenameFile " .. os.date("%Y-%m-%d") .. "<cr>", opts)
+
 -- new file
 keymap.set("n", "<leader>n", ":enew<cr>", { noremap = true, silent = true })
