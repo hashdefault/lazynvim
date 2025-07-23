@@ -29,6 +29,7 @@ return {
       ---@type lspconfig.options
       servers = {
         ts_ls = {},
+        jsonls = {},
         pyright = {},
         cssls = {},
         volar = {
