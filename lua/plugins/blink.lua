@@ -1,89 +1,101 @@
 return {
-  {
-    "saghen/blink.cmp",
-    -- optional: provides snippets for the snippet source
-    dependencies = { { "L3MON4D3/LuaSnip", version = "v2.*" }, { "rafamadriz/friendly-snippets" } },
-
-    -- use a release tag to download pre-built binaries
-    version = "*",
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- See the full "keymap" documentation for information on defining your own keymap.
-      keymap = {
-        preset = "enter",
-        ["<C-p>"] = { "select_prev", "fallback" },
-        ["<Tab>"] = { "select_next", "fallback" },
-        ["<C-space>"] = {
-          function(cmp)
-            cmp.show({ providers = { "snippets" } })
-          end,
-        },
-      },
-      signature = {
-        enabled = false,
-      },
-      snippets = { preset = "luasnip" },
-      completion = {
-        list = {
-          selection = {
-            preselect = false,
-          },
-        },
-        menu = {
-          enabled = true,
-          draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } } },
-          min_width = 15,
-          max_height = 10,
-          border = "rounded",
-          winblend = 0,
-          winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
-          -- Keep the cursor X lines away from the top/bottom of the window
-          scrolloff = 2,
-          -- Note that the gutter will be disabled when border ~= 'none'
-          scrollbar = true,
-          -- Which directions to show the window,
-          -- falling back to the next direction when there's not enough space
-          direction_priority = { "s", "n" },
-
-          -- Whether to automatically show the window when new completion items are available
-          auto_show = true,
-
-          -- Screen coordinates of the command line
-          cmdline_position = function()
-            if vim.g.ui_cmdline_pos ~= nil then
-              local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-              return { pos[1] - 1, pos[2] }
-            end
-            local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-            return { vim.o.lines - height, 0 }
-          end,
-        },
-      },
-      appearance = {
-        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- Useful for when your theme doesn't support blink.cmp
-        -- Will be removed in a future release
-        use_nvim_cmp_as_default = true,
-        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = "mono",
-      },
-
-      -- Default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-      },
-    },
-    opts_extend = { "sources.default" },
+  "hrsh7th/nvim-cmp",
+  enabled = true,
+  version = false, -- last release is way too old
+  event = "InsertEnter",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
   },
+  -- Not all LSP servers add brackets when completing a function.
+  -- To better deal with this, LazyVim adds a custom option to cmp,
+  -- that you can configure. For example:
+  --
+  -- ```lua
+  -- opts = {
+  --   auto_brackets = { "python" }
+  -- }
+  -- ```
+  --
+  opts = function()
+    vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+    local cmp = require("cmp")
+    local defaults = require("cmp.config.default")()
+    local auto_select = true
+    return {
+      auto_brackets = {}, -- configure any filetype to auto add brackets
+      completion = {
+        completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
+      },
+      preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = LazyVim.cmp.confirm({ select = auto_select }),
+        ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
+        ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<A-y>"] = require("minuet").make_cmp_map(),
+        ["<C-CR>"] = function(fallback)
+          cmp.abort()
+          fallback()
+        end,
+        ["<tab>"] = function(fallback)
+          return LazyVim.cmp.map({ "snippet_forward", "ai_accept" }, fallback)()
+        end,
+      }),
+      sources = cmp.config.sources({
+        { name = "minuet" },
+        { name = "lazydev" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" }, -- For luasnip users.
+        { name = "path" },
+      }, {
+        { name = "buffer" },
+      }),
+      performance = {
+        -- It is recommended to increase the timeout duration due to
+        -- the typically slower response speed of LLMs compared to
+        -- other completion sources. This is not needed when you only
+        -- need manual completion.
+        fetching_timeout = 2000,
+      },
+      formatting = {
+        format = function(entry, item)
+          local icons = LazyVim.config.icons.kinds
+          if icons[item.kind] then
+            item.kind = icons[item.kind] .. item.kind
+          end
+
+          local widths = {
+            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+          }
+
+          for key, width in pairs(widths) do
+            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+              item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+            end
+          end
+
+          return item
+        end,
+      },
+      experimental = {
+        -- only show ghost text when we show ai completions
+        ghost_text = vim.g.ai_cmp and {
+          hl_group = "CmpGhostText",
+        } or false,
+      },
+      sorting = defaults.sorting,
+    }
+  end,
+  main = "lazyvim.util.cmp",
 }
