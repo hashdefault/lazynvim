@@ -18,6 +18,7 @@ keymap.set("n", "<C-k>", function()
   vim.diagnostic.goto_prev()
 end, opts)
 
+
 keymap.set("n", "<leader>ll", function()
   require("config.functions").generateGettersAndSetters()
 end, opts)
@@ -32,10 +33,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
--- New tab
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
