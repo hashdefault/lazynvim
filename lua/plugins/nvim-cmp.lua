@@ -1,6 +1,5 @@
 return {
   "saghen/blink.cmp",
-  enabled = true,
   version = not vim.g.lazyvim_blink_main and "*",
   build = vim.g.lazyvim_blink_main and "cargo build --release",
   opts_extend = {
@@ -18,13 +17,17 @@ return {
       version = not vim.g.lazyvim_blink_main and "*",
     },
   },
+
   event = "InsertEnter",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-
-    snippets = { preset = "luasnip" },
+    snippets = {
+      expand = function(snippet, _)
+        return LazyVim.cmp.expand(snippet)
+      end,
+    },
     appearance = {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
@@ -35,8 +38,12 @@ return {
       nerd_font_variant = "mono",
     },
     completion = {
-      ghost_text = {
-        enabled = vim.g.ai_cmp,
+
+      accept = {
+        -- experimental auto-brackets support
+        auto_brackets = {
+          enabled = true,
+        },
       },
       menu = {
         border = "rounded",
@@ -51,34 +58,29 @@ return {
         auto_show = true,
         auto_show_delay_ms = 200,
       },
-      accept = {
-        -- experimental auto-brackets support
-        auto_brackets = {
-          enabled = true,
-        },
-      },
-      list = {
-        selection = {
-          preselect = true,
-          auto_insert = true,
-        },
+      ghost_text = {
+        enabled = vim.g.ai_cmp,
       },
     },
-  },
-  -- experimental signature help support
-  signature = { enabled = true, window = { border = "rounded" } },
-  sources = {
-    -- adding any nvim-cmp sources here will enable them
-    -- with blink.compat
-    compat = {},
-    default = { "lsp", "path", "snippets", "buffer", "luasnip" },
-  },
-  cmdline = {
-    enabled = false,
-  },
-  keymap = {
-    preset = "none",
-    ["<Tab>"] = { "select_and_accept" },
+
+    -- experimental signature help support
+    -- signature = { enabled = true },
+
+    sources = {
+      -- adding any nvim-cmp sources here will enable them
+      -- with blink.compat
+      compat = {},
+      default = { "lsp", "path", "snippets", "buffer" },
+    },
+
+    cmdline = {
+      enabled = false,
+    },
+
+    keymap = {
+      preset = "enter",
+      ["<C-y>"] = { "select_and_accept" },
+    },
   },
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
@@ -95,21 +97,21 @@ return {
       end
     end
 
-    ---- add ai_accept to <C-y> key
-    --if not opts.keymap["<C-y>"] then
-    --  if opts.keymap.preset == "super-tab" then -- super-tab
-    --    opts.keymap["<C-y>"] = {
-    --      require("blink.cmp.keymap.presets")["super-tab"]["<C-y>"][1],
-    --      LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-    --      "fallback",
-    --    }
-    --  else -- other presets
-    --    opts.keymap["<C-y>"] = {
-    --      LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-    --      "fallback",
-    --    }
-    --  end
-    --end
+    -- add ai_accept to <Tab> key
+    if not opts.keymap["<Tab>"] then
+      if opts.keymap.preset == "super-tab" then -- super-tab
+        opts.keymap["<Tab>"] = {
+          require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          "fallback",
+        }
+      else -- other presets
+        opts.keymap["<Tab>"] = {
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          "fallback",
+        }
+      end
+    end
 
     -- Unset custom prop to pass blink.cmp validation
     opts.sources.compat = nil

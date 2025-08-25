@@ -3,6 +3,7 @@
 -- Add any additional options here
 vim.g.mapleader = " "
 vim.g.autoformat = false
+vim.g.loaded_cmp = 1
 
 vim.g.snacks_animate = false
 vim.g.minianimate_disable = true

@@ -23,12 +23,12 @@ return {
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
     opts = {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
         ts_ls = {},
+        intelephense = {},
         jsonls = {},
         pyright = {},
         cssls = {},
