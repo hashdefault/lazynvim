@@ -3,7 +3,7 @@ return {
     "xiyaowong/transparent.nvim",
     priority = 1000,
     lazy = false,
-    enabled = false,
+    enabled = true,
     options = {
       groups = {
         "Normal",
