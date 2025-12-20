@@ -1,8 +1,4 @@
-local loaded, ls = pcall(require, "luasnip")
-if not loaded then
-  return
-end
-
+local ls = require("luasnip")
 local t = ls.text_node
 local i = ls.insert_node
 
@@ -31,9 +27,9 @@ return {
     i(1),
     t({ " as $" }),
     i(2),
-    t({ "){", "" }),
+    t({ "){ " }),
     i(0),
-    t({ "", "}", "" }),
+    t({ "", "}" }),
   }),
   ls.snippet("html", {
     t({ "<!DOCTYPE html>", "" }),

@@ -1,53 +1,40 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+
 vim.g.mapleader = " "
 vim.g.autoformat = false
-vim.g.loaded_cmp = 1
+vim.g.loaded_cmp = 1 -- Disable nvim-cmp in favor of blink.cmp
 
+-- Disable animations/dashboard as per user config
 vim.g.snacks_animate = false
 vim.g.minianimate_disable = true
 vim.g.dashboard = false
 
-vim.scriptencoding = "utf-8"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+vim.opt.relativenumber = false -- LazyVim enables this by default, disabling per user preference
 
-vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.scrolloff = 10 -- LazyVim default is 4
+vim.opt.mouse = "" -- Disable mouse
 
+vim.opt.laststatus = 2 -- LazyVim default is 3 (global statusline)
+
+-- Other user preferences
 vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
 vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.scrolloff = 10
 vim.opt.shell = "fish"
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.ignorecase = true
 vim.opt.smarttab = true
 vim.opt.background = "dark"
 vim.opt.breakindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.textwidth = 150
-vim.opt.wrap = false -- No Wrap lines
+vim.opt.wrap = false
 vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.cursorline = true
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
-vim.opt.compatible = false
-vim.opt.filetype = "on"
-vim.opt.syntax = "on"
+vim.opt.path:append({ "**" })
 
+-- Spellcheck for markdown
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.md",
   callback = function()
@@ -55,12 +42,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt_local.spelllang = { "pt_br", "en" }
   end,
 })
-
-vim.cmd([[ highlight Normal guibg=NONE ctermbg=NONE ]])
-
--- Undercurl
---vim.cmd([[let &t_Cs = "\e[4:3m"]])
---vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })

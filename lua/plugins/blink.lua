@@ -24,6 +24,7 @@ return {
   ---@type blink.cmp.Config
   opts = {
     snippets = {
+      preset = "luasnip",
       expand = function(snippet, _)
         return LazyVim.cmp.expand(snippet)
       end,

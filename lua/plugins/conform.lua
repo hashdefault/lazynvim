@@ -1,8 +1,8 @@
 return {
   "stevearc/conform.nvim",
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-  default_format_opts = {
+  event = { "BufReadPre", "BufNewFile" },
+  opts = {
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
@@ -27,11 +27,18 @@ return {
       timeout_ms = 1000,
     },
   },
-  vim.keymap.set({ "n", "v" }, "<leader>fm", function()
-    require("conform").format({
-      lsp_fallback = true,
-      async = false,
-      timeout_ms = 1000,
-    })
-  end, { desc = "Format file or range (in visual mode)" }),
+  keys = {
+    {
+      "<leader>fm",
+      function()
+        require("conform").format({
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 1000,
+        })
+      end,
+      mode = { "n", "v" },
+      desc = "Format file or range",
+    },
+  },
 }
