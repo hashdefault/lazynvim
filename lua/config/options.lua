@@ -45,3 +45,4 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })
+
