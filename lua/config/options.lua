@@ -3,7 +3,7 @@
 
 vim.g.mapleader = " "
 vim.g.autoformat = false
-vim.g.loaded_cmp = 1 -- Disable nvim-cmp in favor of blink.cmp
+-- vim.g.loaded_cmp = 1 -- Disable nvim-cmp in favor of blink.cmp
 
 -- Disable animations/dashboard as per user config
 vim.g.snacks_animate = false
@@ -44,5 +44,5 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+-- vim.opt.formatoptions:append({ "r" })
 
