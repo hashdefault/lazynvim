@@ -16,7 +16,8 @@ return {
         "css-lsp",
         "intelephense", --php
         "vue-language-server", --vue
-        "typescript-language-server" --ts
+        "typescript-language-server", --ts
+        "rust-analyzer", --rust
       })
     end,
   },
@@ -31,6 +32,7 @@ return {
         intelephense = {},
         jsonls = {},
         pyright = {},
+        rust_analyzer = {},
         cssls = {},
         volar = {
           filetypes = { "typescript", "javascript", "vue", "javascriptreact", "typescriptreact" }, -- Add relevant file types

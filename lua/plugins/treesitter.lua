@@ -45,6 +45,7 @@ return {
         "vimdoc",
         "xml",
         "yaml",
+        "rust",
       },
     },
     ---@param opts lazyvim.TSConfig

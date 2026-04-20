@@ -20,6 +20,7 @@ return {
       python = { "isort", "black" },
       php = { "intelephense" },
       sh = { "shfmt" },
+      rust = { "rustfmt" },
     },
     format = {
       lsp_fallback = true,
