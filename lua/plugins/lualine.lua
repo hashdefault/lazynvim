@@ -5,7 +5,7 @@ local lualine_config = {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "eldritch",
+      --theme = "eldritch",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
