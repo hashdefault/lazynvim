@@ -1,24 +1,25 @@
 return {
-  --{
-  --  "folke/tokyonight.nvim",
-  --  lazy = false,
-  --  priority = 1000,
-  --  opts = {
-  --    style = "night",
-  --    styles = {
-  --      comments = { italic = false },
-  --      keywords = { italic = false },
-  --      functions = { italic = false },
-  --    },
-  --  },
-  --},
   {
-  "eldritch-theme/eldritch.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    transparent = true,
-    terminal_colors = true,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      style = "night",
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+        functions = { italic = false },
+      },
+    },
   },
-  }
+  --{
+  --"eldritch-theme/eldritch.nvim",
+  --lazy = false,
+  --priority = 1000,
+  --opts = {
+  --  transparent = true,
+  --  terminal_colors = true,
+  --},
+  --}
 }
