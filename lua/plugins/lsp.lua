@@ -18,6 +18,8 @@ return {
         "vue-language-server", --vue
         "typescript-language-server", --ts
         "rust-analyzer", --rust
+        "isort", --python (used by conform)
+        "phpcs", --php, provides phpcbf (used by conform)
       })
     end,
   },
@@ -28,14 +30,16 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
-        ts_ls = {},
         intelephense = {},
         jsonls = {},
         pyright = {},
         rust_analyzer = {},
         cssls = {},
-        volar = {
-          filetypes = { "typescript", "javascript", "vue", "javascriptreact", "typescriptreact" }, -- Add relevant file types
+        -- vue_ls takes over full TS/JS language support in takeover mode
+        -- (hybridMode = false), so ts_ls is disabled below to avoid two
+        -- LSP servers attaching to the same .ts/.js buffers.
+        vue_ls = {
+          filetypes = { "typescript", "javascript", "vue", "javascriptreact", "typescriptreact" },
           init_options = {
             vue = {
               hybridMode = false,
@@ -136,7 +140,12 @@ return {
         },
       },
 
-      setup = {},
+      setup = {
+        ts_ls = function()
+          -- skip setup: vue_ls (hybridMode = false) already covers ts/js/tsx/jsx
+          return true
+        end,
+      },
     },
   },
 }
